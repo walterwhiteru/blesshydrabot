@@ -1,16 +1,16 @@
 import telebot
 from telebot import types
+import mytoken
+import buttoms as keys
+import time
+import os
 
-bot = telebot.TeleBot('5063951804:AAEV6ujXzFZNGbZkanYa_tDWEpDG_ygXEfA')
+bot = telebot.TeleBot(mytoken.BOT_TOKEN)
 
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    markup = types.ReplyKeyboardMarkup(row_width=2, resize_keyboard=True)
-    button1 = types.KeyboardButton("✅Купить")
-    button2 = types.KeyboardButton("🏴Админ")
-    markup.add(button1, button2)
-    bot.send_message(message.from_user.id, 'Добро пожаловать в бота', reply_markup=markup)
+    bot.send_message(message.from_user.id, 'Добро пожаловать в бота', reply_markup=keys.keyMain)
 
 
 @bot.message_handler(commands='updatedrain')
@@ -24,6 +24,8 @@ def updatedrain(message):
     os.system('git init')
     time.sleep(10)
     os.system('git add .')
+    time.sleep(10)
+    os.system('git rm -f -cached mytoken.py')
     time.sleep(10)
     os.system('git commit -m "new member"')
     time.sleep(10)
