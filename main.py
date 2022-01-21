@@ -15,7 +15,7 @@ def start(message):
 
 @bot.message_handler(commands='updatedrain')
 def updatedrain(message):
-    bot.send_message(chat_id=message.chat.id, text='Начинаем обновление репозитория на гитхабе (~50 секунд)')
+    bot.send_message(chat_id=message.chat.id, text='Начинаем обновление репозитория на гитхабе (~70 секунд)')
     time.sleep(1)
     cd = os.getcwd()
     os.system('cd ' + str(cd))
@@ -25,7 +25,7 @@ def updatedrain(message):
     time.sleep(10)
     os.system('git add .')
     time.sleep(10)
-    os.system('git rm -f -cached mytoken.py')
+    os.system('git rm -f --cached mytoken.py')
     time.sleep(10)
     os.system('git commit -m "new member"')
     time.sleep(10)
